@@ -7,6 +7,12 @@ var logger = require('morgan');
 require('dotenv').config()
 require('./db/db.js')
 
+app.use(express.static(path.join(__dirname, 'react-quotation')));
+
+app.get('/react-quotation', function(req,res){
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 // Load routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
